@@ -16,7 +16,9 @@ const SidebarItem = ({ title, slug, tabIndex }: Props) => {
       tabIndex={tabIndex + 1}
       onClick={() => goTo(`/${slug ?? ""}`)}
     >
-      <div className="SidebarItem__icon-container">{/* add icon here */}</div>
+      <div className="SidebarItem__icon-container">
+        {/* add FA icon here */}
+      </div>
       <span className="SidebarItem__title">{title}</span>
     </div>
   );

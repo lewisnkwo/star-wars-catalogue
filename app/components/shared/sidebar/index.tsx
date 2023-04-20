@@ -1,6 +1,12 @@
 import Image from "../image";
+import Item from "./sidebar-item";
+import type { SidebarItem as SidebarItemT } from "../../../types";
 
-const Sidebar = () => {
+interface Props {
+  items: SidebarItemT[];
+}
+
+const Sidebar = ({ items }: Props) => {
   return (
     <div>
       <div className="Sidebar__top">
@@ -10,7 +16,11 @@ const Sidebar = () => {
           Search your favourite Star Wars characters and find out their info
         </span>
       </div>
-      {/* Add sidebar items here */}
+      <nav className="Sidebar__items" aria-label="Side Navigation">
+        {items.map(({ icon, title, slug }, i) => (
+          <Item key={i} icon={icon} title={title} slug={slug} tabIndex={i} />
+        ))}
+      </nav>
     </div>
   );
 };
