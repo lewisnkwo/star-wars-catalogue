@@ -1,3 +1,7 @@
+import Header from "~/components/shared/header";
+import Footer from "~/components/shared/footer";
+import Sidebar from "~/components/shared/sidebar";
+
 interface Props {
   children: React.ReactElement;
 }
@@ -5,11 +9,22 @@ interface Props {
 const Layout = ({ children }: Props) => {
   return (
     <div className="Layout">
-      <div>Sidebar</div>
+      <Sidebar
+        items={[
+          {
+            icon: "",
+            title: "Home",
+          },
+          {
+            icon: "",
+            title: "Planet",
+          },
+        ]}
+      />
       <div>
-        <div>Header</div>
+        <Header onMenuClick={() => {}} />
         {children}
-        <div>Footer</div>
+        <Footer />
       </div>
     </div>
   );
