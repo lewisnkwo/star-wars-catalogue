@@ -1,4 +1,5 @@
 import type { SidebarDetailItem } from "~/types";
+import Item from "./item";
 
 export interface Props {
   title: string;
@@ -15,7 +16,7 @@ const SidebarDetail = ({ title, subtitle, items }: Props) => (
       </div>
       <section className="SidebarDetail__items">
         {items.map((item, i) => (
-          <span key={i}>{item.label}</span>
+          <Item key={i} {...item} />
         ))}
       </section>
     </section>
