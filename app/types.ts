@@ -4,4 +4,9 @@ export interface SidebarItem {
   slug?: string;
 }
 
+export interface SidebarDetailItem {
+  label: string;
+  value: string;
+}
+
 export type Size = "small" | "medium" | "large";
