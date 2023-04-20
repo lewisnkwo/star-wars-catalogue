@@ -1,7 +1,9 @@
+import type { Size } from "~/types";
+
 interface Props {
   image: string | null;
   name: string;
-  size: "small" | "medium" | "large";
+  size: Size;
 }
 
 const Image = ({ image, name, size }: Props) => (
