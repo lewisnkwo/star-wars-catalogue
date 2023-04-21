@@ -17,13 +17,7 @@ import imageStyles from "./components/shared/image/index.css";
 import sidebarStyles from "./components/shared/sidebar/index.css";
 import sidebarItemStyles from "./components/shared/sidebar/sidebar-item/index.css";
 import sidebarDetailStyles from "./components/shared/sidebar-detail/index.css";
-import sidebarDetailPostItemStyles from "./components/shared/sidebar-detail/post-item/index.css";
-
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "Lewis Nkwo",
-  viewport: "width=device-width,initial-scale=1",
-});
+import sidebarDetailItemStyles from "./components/shared/sidebar-detail/item/index.css";
 
 export const links: LinksFunction = () => {
   return [
@@ -37,7 +31,7 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: sidebarStyles },
     { rel: "stylesheet", href: sidebarItemStyles },
     { rel: "stylesheet", href: sidebarDetailStyles },
-    { rel: "stylesheet", href: sidebarDetailPostItemStyles },
+    { rel: "stylesheet", href: sidebarDetailItemStyles },
   ];
 };
 
