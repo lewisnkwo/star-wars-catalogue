@@ -21,20 +21,22 @@
   margin-top: 40px;
 }
 
-.Sidebar__name {
+.Sidebar__title {
   font-size: 17px;
   line-height: 24px;
   color: #0d1619;
   font-weight: 500;
   margin-top: 16px;
+  text-align: left;
 }
 
-.Sidebar__role {
+.Sidebar__description {
   font-size: 15px;
   line-height: 20px;
   color: #6b6c6c;
   font-weight: 400;
   margin-top: 4px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

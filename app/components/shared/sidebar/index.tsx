@@ -8,7 +8,7 @@ interface Props {
 
 const Sidebar = ({ items }: Props) => {
   return (
-    <div>
+    <div className="Sidebar">
       <div className="Sidebar__top">
         <Image image={null} name="Star Wars Logo" size="medium" />
         <span className="Sidebar__title">Star Wars Catalogue</span>

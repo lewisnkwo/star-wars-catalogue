@@ -20,14 +20,16 @@
   margin-top: 40px;
 }
 
-.Sidebar__name {
+.Sidebar__title {
   @include text-content-title;
   margin-top: 16px;
+  text-align: left;
 }
 
-.Sidebar__role {
+.Sidebar__description {
   @include text-secondary-small;
   margin-top: 4px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

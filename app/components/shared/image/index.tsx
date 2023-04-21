@@ -1,4 +1,5 @@
-import type { Size } from "~/types";
+import type { Size } from "../../../types";
+import { createInitials } from "../../../utils";
 
 interface Props {
   image: string | null;
@@ -8,7 +9,11 @@ interface Props {
 
 const Image = ({ image, name, size }: Props) => (
   <div className={`Image--${size}`} aria-label={`Image of ${name}`}>
-    <img className="Image__img" src={image ?? undefined} alt={name} />
+    {image !== null ? (
+      <img className="Image__image" src={image} alt={name} />
+    ) : (
+      <span className="Image__initials">{createInitials(name)}</span>
+    )}
   </div>
 );
 
