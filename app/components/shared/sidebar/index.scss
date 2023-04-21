@@ -1,0 +1,73 @@
+@use "../../../styles/variables" as *;
+
+.Sidebar,
+.Sidebar--open,
+.Sidebar--close {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  border-right: $border-container;
+  background: #ffffff;
+}
+
+.Sidebar__top {
+  @include flex(column);
+}
+
+.Sidebar__items {
+  margin-top: 40px;
+}
+
+.Sidebar__name {
+  @include text-post-title;
+  margin-top: 16px;
+}
+
+.Sidebar__role {
+  @include text-secondary-small;
+  margin-top: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Sidebar,
+  .Sidebar--open,
+  .Sidebar--close {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .Sidebar__underlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #9f9f9f;
+    opacity: 0.3;
+  }
+
+  .Sidebar {
+    left: -280px;
+  }
+
+  .Sidebar--open {
+    left: 0px;
+  }
+
+  .Sidebar--close {
+    left: -280px;
+    animation: slide-left 0.2s ease-out backwards;
+  }
+
+  @keyframes slide-left {
+    0% {
+      left: 0px;
+    }
+    100% {
+      left: -280px;
+    }
+  }
+}
