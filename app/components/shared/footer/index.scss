@@ -1,0 +1,30 @@
+@use "../../../styles/variables" as *;
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 14px 30px;
+  border-top: $border-container;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  span,
+  a {
+    @include text-secondary;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+
+    span,
+    a {
+      @include text-secondary-small;
+    }
+  }
+}
