@@ -7,15 +7,15 @@ const Home = () => {
     undefined
   );
 
-  const sidebarPostRef = useRef<HTMLDivElement | null>(null);
+  const sidebarCharacterRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
   useEffect(() => {
-    if (sidebarPostRef?.current) {
-      sidebarPostRef.current.scrollIntoView({
+    if (sidebarCharacterRef?.current) {
+      sidebarCharacterRef.current.scrollIntoView({
         behavior: "smooth",
         block: "end",
         inline: "nearest",
@@ -37,7 +37,7 @@ const Home = () => {
         </div>
       </main>
       {selectedCharacter && (
-        <div ref={isMobile ? sidebarPostRef : null}>
+        <div ref={isMobile ? sidebarCharacterRef : null}>
           <SidebarDetail title="" subtitle="" items={[]} />
         </div>
       )}
