@@ -21,7 +21,7 @@
 }
 
 .Sidebar__name {
-  @include text-post-title;
+  @include text-content-title;
   margin-top: 16px;
 }
 
