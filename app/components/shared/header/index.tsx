@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 interface Props {
   onMenuClick: () => void;
 }
@@ -5,7 +7,7 @@ interface Props {
 const Header = ({ onMenuClick }: Props) => (
   <header>
     <button id="menu-button" aria-label="Menu" onClick={onMenuClick}>
-      {/* bars icon */}
+      <FontAwesomeIcon icon="bars" />
     </button>
     <>
       <input
@@ -14,7 +16,9 @@ const Header = ({ onMenuClick }: Props) => (
         role="search"
         aria-label="Search"
       />
-      <button aria-label="Settings">{/* cog icon */}</button>
+      <button aria-label="Settings">
+        <FontAwesomeIcon icon="filter" />
+      </button>
     </>
   </header>
 );

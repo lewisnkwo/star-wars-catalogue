@@ -1,6 +1,15 @@
 import Header from "~/components/shared/header";
 import Footer from "~/components/shared/footer";
 import Sidebar from "~/components/shared/sidebar";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faUser,
+  faGlobe,
+  faBars,
+  faFilter,
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faUser, faGlobe, faBars, faFilter);
 
 interface Props {
   children: React.ReactElement;
@@ -12,11 +21,11 @@ const Layout = ({ children }: Props) => {
       <Sidebar
         items={[
           {
-            icon: "",
+            icon: "user",
             title: "Home",
           },
           {
-            icon: "",
+            icon: "globe",
             title: "Planet",
           },
         ]}

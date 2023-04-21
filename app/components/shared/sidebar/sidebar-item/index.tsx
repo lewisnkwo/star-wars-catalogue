@@ -1,12 +1,15 @@
+import type { IconName } from "@fortawesome/fontawesome-common-types";
 import type { SidebarItem as SidebarItemT } from "../../../../types";
 import { useNavigate } from "@remix-run/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props extends SidebarItemT {
   tabIndex: number;
 }
 
-const SidebarItem = ({ title, slug, tabIndex }: Props) => {
+const SidebarItem = ({ title, icon, slug, tabIndex }: Props) => {
   const goTo = useNavigate();
+  const faIcon = icon as IconName;
 
   return (
     <div
@@ -17,7 +20,7 @@ const SidebarItem = ({ title, slug, tabIndex }: Props) => {
       onClick={() => goTo(`/${slug ?? ""}`)}
     >
       <div className="SidebarItem__icon-container">
-        {/* add FA icon here */}
+        <FontAwesomeIcon icon={faIcon} />
       </div>
       <span className="SidebarItem__title">{title}</span>
     </div>
