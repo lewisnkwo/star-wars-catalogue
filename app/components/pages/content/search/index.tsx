@@ -18,8 +18,6 @@ const Search = () => {
     Character | undefined
   >(undefined);
 
-  const sidebarCharacterRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
@@ -28,14 +26,18 @@ const Search = () => {
     setError(false);
     setLoading(true);
 
-    fetch(`https://swapi.dev/api/people?search=${encodeURIComponent(query)}`)
+    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent(query)}`)
       .then((response) => response.json())
-      .then(({ results }) => {
-        setCharacters(results);
+      .then(({ data }) => {
+        console.log(data.results);
+        setCharacters(data.results as Character[]);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, [query]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const sidebarCharacterRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (sidebarCharacterRef?.current) {
@@ -65,11 +67,12 @@ const Search = () => {
                 again later.
               </span>
             )}
-            {(characters === undefined || characters?.length === 0) && (
-              <span className="error">
-                No results found. Please try another query.
-              </span>
-            )}
+            {!loading &&
+              (characters === undefined || characters?.length === 0) && (
+                <span className="error">
+                  No results found. Please try another query.
+                </span>
+              )}
             {characters?.map((c, i) => (
               <CharacterCard
                 key={i}

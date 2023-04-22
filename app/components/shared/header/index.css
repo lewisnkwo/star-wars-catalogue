@@ -15,12 +15,12 @@ header input[type=search] {
   border: 1px solid #bfbfbf;
   border-radius: 8px;
   background: transparent url("../../../images/search.svg") no-repeat 14px center;
-  width: 256px;
+  width: 300px;
   padding: 8px 12px 8px 40px;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
-  margin-right: 33px;
+  margin-right: 35px;
   background-size: 17px;
 }
 header input[type=search]::placeholder {

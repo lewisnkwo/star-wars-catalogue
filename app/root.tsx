@@ -14,7 +14,7 @@ import homeStyles from "./components/pages/content/home/index.css";
 import planetStyles from "./components/pages/content/planet/index.css";
 import profileStyles from "./components/pages/content/profile/index.css";
 import searchStyles from "./components/pages/content/search/index.css";
-import characterCardStyles from "./components/pages/content/home/character-card/index.css";
+import characterCardStyles from "./components/shared/character-card/index.css";
 import footerStyles from "./components/shared/footer/index.css";
 import imageStyles from "./components/shared/image/index.css";
 import sidebarStyles from "./components/shared/sidebar/index.css";
