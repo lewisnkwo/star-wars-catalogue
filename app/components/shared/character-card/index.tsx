@@ -1,4 +1,4 @@
-import Image from "../../../../shared/image";
+import Image from "../image";
 
 export interface Props {
   name: string;

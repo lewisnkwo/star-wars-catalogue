@@ -1,9 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
-import CharacterCard from "../../../shared/character-card";
+import CharacterCard from "~/components/shared/character-card";
+import { useLocation } from "@remix-run/react";
 
-const Home = () => {
+const Search = () => {
+  const location = useLocation();
+  const { query } = location.state;
+
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [characters, setCharacters] = useState<Character[] | undefined>(
     undefined
@@ -24,14 +28,14 @@ const Home = () => {
     setError(false);
     setLoading(true);
 
-    fetch("https://swapi.dev/api/people")
+    fetch(`https://swapi.dev/api/people?search=${encodeURIComponent(query)}`)
       .then((response) => response.json())
       .then(({ results }) => {
         setCharacters(results);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, []);
+  }, [query]);
 
   useEffect(() => {
     if (sidebarCharacterRef?.current) {
@@ -44,21 +48,26 @@ const Home = () => {
   }, [selectedCharacter]);
 
   return (
-    <div className={`Home${selectedCharacter ? "-with-sidebar" : ""}`}>
+    <div className={`Search${selectedCharacter ? "-with-sidebar" : ""}`}>
       <main>
         <div>
           <section>
-            <span className="Home__heading">Latest characters</span>
-            <span className="Home__description">
+            <span className="Search__heading">Search results:</span>
+            <span className="Search__description">
               Click on a character to view more information about them.
             </span>
           </section>
-          <section className="Home__character-list">
-            {loading && <span className="loading">Loading people...</span>}
+          <section className="Search__character-list">
+            {loading && <span className="loading">Loading results...</span>}
             {error && (
               <span className="error">
-                Oops! An error occurred while loading the characters. Please
-                refresh and try again.
+                Oops! An error occurred while conducting the search. Please try
+                again later.
+              </span>
+            )}
+            {(characters === undefined || characters?.length === 0) && (
+              <span className="error">
+                No results found. Please try another query.
               </span>
             )}
             {characters?.map((c, i) => (
@@ -96,4 +105,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Search;
