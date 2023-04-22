@@ -1,0 +1,53 @@
+.Planet__heading {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  display: block;
+}
+
+.Planet__details {
+  margin-top: 20px;
+}
+
+.Planet__residents {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.Planet__residents-label {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #6b6c6c;
+}
+
+.Planet__actions {
+  border-top: 1px solid #e5e5e5;
+  margin-top: 30px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Planet__residents {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

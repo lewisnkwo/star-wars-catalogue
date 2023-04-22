@@ -10,7 +10,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { url, name } = location.state;
+  const { url } = location.state;
 
   useEffect(() => {
     setError(false);
@@ -28,7 +28,9 @@ const Profile = () => {
       <main>
         <div>
           <section>
-            <span className="Profile__heading">{name}</span>
+            <span className="Profile__heading">
+              {character?.name ?? "Character"}
+            </span>
           </section>
           <section className="Profile__details">
             {loading && (
@@ -53,7 +55,8 @@ const Profile = () => {
               </>
             )}
             <div className="Profile__actions">
-              <button onClick={() => navigate(-1)}>Go back to homepage</button>
+              <button onClick={() => navigate(-1)}>Go back</button>
+              <button onClick={() => navigate("/")}>Go back to homepage</button>
             </div>
           </section>
         </div>

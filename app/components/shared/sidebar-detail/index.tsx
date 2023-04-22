@@ -17,9 +17,17 @@ const SidebarDetail = ({ name, homeworld, items, profile }: Props) => {
       <section className="SidebarDetail__top">
         <div className="SidebarDetail__info">
           <span className="SidebarDetail__title">{name}</span>
-          <span className="SidebarDetail__subtitle">
-            <a href={homeworld}>Go to homeworld</a>
-          </span>
+          <button
+            onClick={() =>
+              navigate("/planet", {
+                state: {
+                  url: homeworld,
+                },
+              })
+            }
+          >
+            View homeworld
+          </button>
         </div>
       </section>
       <section className="SidebarDetail__items">
@@ -32,12 +40,11 @@ const SidebarDetail = ({ name, homeworld, items, profile }: Props) => {
               navigate("/profile", {
                 state: {
                   url: profile,
-                  name,
                 },
               })
             }
           >
-            View profile
+            View full profile
           </button>
         </div>
       </section>

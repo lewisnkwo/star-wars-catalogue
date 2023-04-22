@@ -1,0 +1,42 @@
+@use "../../../../styles/variables" as *;
+
+.Planet__heading {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  display: block;
+}
+
+.Planet__details {
+  margin-top: 20px;
+}
+
+.Planet__residents {
+  margin-top: 20px;
+  @include flex(row, flex-start);
+  gap: 15px;
+}
+
+.Planet__residents-label {
+  margin-top: 20px;
+  @include sidebar-item-value;
+  color: $text-secondary;
+}
+
+.Planet__actions {
+  border-top: $border-container;
+  margin-top: 30px;
+  padding-top: 20px;
+  @include flex(column);
+  align-items: flex-start;
+  gap: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Planet__residents {
+    margin-top: 20px;
+    @include flex(column);
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

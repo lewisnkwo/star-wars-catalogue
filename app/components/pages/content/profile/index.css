@@ -10,7 +10,15 @@
 }
 
 .Profile__actions {
-  margin-top: 40px;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 30px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 /*# sourceMappingURL=index.css.map */
