@@ -4,7 +4,7 @@ export interface SidebarItem {
   slug?: string;
 }
 
-export interface SidebarDetailItem {
+export interface InfoItem {
   label: string;
   value: string;
 }

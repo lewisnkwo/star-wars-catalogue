@@ -17,7 +17,7 @@ import imageStyles from "./components/shared/image/index.css";
 import sidebarStyles from "./components/shared/sidebar/index.css";
 import sidebarItemStyles from "./components/shared/sidebar/sidebar-item/index.css";
 import sidebarDetailStyles from "./components/shared/sidebar-detail/index.css";
-import sidebarDetailItemStyles from "./components/shared/sidebar-detail/item/index.css";
+import infoItemStyles from "./components/shared/info-item/index.css";
 
 export const links: LinksFunction = () => {
   return [
@@ -31,7 +31,7 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: sidebarStyles },
     { rel: "stylesheet", href: sidebarItemStyles },
     { rel: "stylesheet", href: sidebarDetailStyles },
-    { rel: "stylesheet", href: sidebarDetailItemStyles },
+    { rel: "stylesheet", href: infoItemStyles },
   ];
 };
 

@@ -1,10 +1,10 @@
-import type { SidebarDetailItem } from "~/types";
-import Item from "./item";
+import type { InfoItem } from "~/types";
+import Item from "../info-item";
 
 export interface Props {
   name: string;
   homeworld: string;
-  items: SidebarDetailItem[];
+  items: InfoItem[];
   profile: string;
 }
 
