@@ -18,8 +18,8 @@ describe("createInitials", () => {
     expect(createInitials("Lewis Nkwo")).toBe("LN");
   });
 
-  it("should return a maximum of 4 initials", () => {
-    expect(createInitials("Lewis Nkwo Another Name Here")).toBe("LNAN");
+  it("should return a maximum of 2 initials", () => {
+    expect(createInitials("Lewis Nkwo Another Name Here")).toBe("LN");
   });
 });
 

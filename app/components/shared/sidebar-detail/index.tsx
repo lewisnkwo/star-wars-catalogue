@@ -2,23 +2,25 @@ import type { SidebarDetailItem } from "~/types";
 import Item from "./item";
 
 export interface Props {
-  title: string;
-  subtitle: string;
+  name: string;
+  homeworld: string;
   items: SidebarDetailItem[];
 }
 
-const SidebarDetail = ({ title, subtitle, items }: Props) => (
-  <div className="SidebarDetail" aria-label={title}>
+const SidebarDetail = ({ name, homeworld, items }: Props) => (
+  <div className="SidebarDetail" aria-label={name}>
     <section className="SidebarDetail__top">
       <div className="SidebarDetail__info">
-        <span className="SidebarDetail__title">{title}</span>
-        <span className="SidebarDetail__subtitle">{subtitle}</span>
+        <span className="SidebarDetail__title">{name}</span>
+        <span className="SidebarDetail__subtitle">
+          <a href={homeworld}>Go to homeworld</a>
+        </span>
       </div>
-      <section className="SidebarDetail__items">
-        {items.map((item, i) => (
-          <Item key={i} {...item} />
-        ))}
-      </section>
+    </section>
+    <section className="SidebarDetail__items">
+      {items.map((item, i) => (
+        <Item key={i} {...item} />
+      ))}
     </section>
   </div>
 );
