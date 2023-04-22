@@ -37,6 +37,13 @@
   padding: 0px 40px;
 }
 
+.SidebarDetail__profile {
+  margin-top: 40px;
+}
+.SidebarDetail__profile a {
+  font-weight: 600;
+}
+
 .SidebarDetail__title {
   font-size: 17px;
   line-height: 24px;

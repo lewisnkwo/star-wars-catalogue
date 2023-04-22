@@ -43,8 +43,6 @@ const Home = () => {
     }
   }, [selectedCharacter]);
 
-  console.log(characters);
-
   return (
     <div className={`Home${selectedCharacter ? "-with-sidebar" : ""}`}>
       <main>
@@ -90,6 +88,7 @@ const Home = () => {
               { label: "Height", value: selectedCharacter.height },
               { label: "Mass", value: selectedCharacter.mass },
             ]}
+            profile={selectedCharacter.url}
           />
         </div>
       )}

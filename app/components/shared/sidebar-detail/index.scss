@@ -34,6 +34,14 @@
   padding: 0px 40px;
 }
 
+.SidebarDetail__profile {
+  margin-top: 40px;
+
+  a {
+    font-weight: 600;
+  }
+}
+
 .SidebarDetail__title {
   @include text-content-title;
   font-size: 24px;
