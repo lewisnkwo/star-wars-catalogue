@@ -2,12 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
 import CharacterCard from "~/components/shared/character-card";
-import { useLocation } from "@remix-run/react";
 
 const Search = () => {
-  const location = useLocation();
-  const { query } = location.state;
-
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [characters, setCharacters] = useState<Character[] | undefined>(
     undefined
@@ -26,15 +22,13 @@ const Search = () => {
     setError(false);
     setLoading(true);
 
-    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent(query)}`)
+    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent("luke")}`)
       .then((response) => response.json())
-      .then(({ data }) => {
-        console.log(data.results);
-        setCharacters(data.results as Character[]);
+      .then(({ results }) => {
+        setCharacters(results);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const sidebarCharacterRef = useRef<HTMLDivElement | null>(null);
@@ -67,12 +61,11 @@ const Search = () => {
                 again later.
               </span>
             )}
-            {!loading &&
-              (characters === undefined || characters?.length === 0) && (
-                <span className="error">
-                  No results found. Please try another query.
-                </span>
-              )}
+            {characters?.length === 0 && loading === false && (
+              <span className="error">
+                No results found. Please try another query.
+              </span>
+            )}
             {characters?.map((c, i) => (
               <CharacterCard
                 key={i}
@@ -98,7 +91,6 @@ const Search = () => {
               { label: "Gender", value: selectedCharacter.gender },
               { label: "Birth Year", value: selectedCharacter.birth_year },
               { label: "Height", value: selectedCharacter.height },
-              { label: "Mass", value: selectedCharacter.mass },
             ]}
             profile={selectedCharacter.url}
           />

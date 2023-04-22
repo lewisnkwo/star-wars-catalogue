@@ -86,7 +86,6 @@ const Home = () => {
               { label: "Gender", value: selectedCharacter.gender },
               { label: "Birth Year", value: selectedCharacter.birth_year },
               { label: "Height", value: selectedCharacter.height },
-              { label: "Mass", value: selectedCharacter.mass },
             ]}
             profile={selectedCharacter.url}
           />
