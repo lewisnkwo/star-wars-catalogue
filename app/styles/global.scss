@@ -18,6 +18,15 @@ a {
   @include text-secondary;
 }
 
+button {
+  @include text-secondary;
+  border: 1px solid #bfbfbf;
+  border-radius: $border-radius;
+  padding: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   main {
     padding: 90px 30px 20px 37px;

@@ -52,7 +52,9 @@ const Profile = () => {
                 <InfoItem label="Gender" value={character.gender} />
               </>
             )}
-            <button onClick={() => navigate(-1)}>Go back to homepage</button>
+            <div className="Profile__actions">
+              <button onClick={() => navigate(-1)}>Go back to homepage</button>
+            </div>
           </section>
         </div>
       </main>
