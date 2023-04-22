@@ -10,7 +10,7 @@ interface Props {
 const Image = ({ image, name, size }: Props) => (
   <div className={`Image--${size}`} aria-label={`Image of ${name}`}>
     {image !== null ? (
-      <img className="Image__image" src={image} alt={name} />
+      <img src={image} alt={name} />
     ) : (
       <span className="Image__initials">{createInitials(name)}</span>
     )}

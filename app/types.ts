@@ -1,7 +1,7 @@
 export interface SidebarItem {
   icon: string;
   title: string;
-  slug?: string;
+  slug: string;
 }
 
 export interface InfoItem {

@@ -50,7 +50,7 @@ const Home = () => {
           <section>
             <span className="Home__heading">Latest characters</span>
             <span className="Home__description">
-              Click on a character to view more information about them
+              Click on a character to view more information about them.
             </span>
           </section>
           <section className="Home__character-list">

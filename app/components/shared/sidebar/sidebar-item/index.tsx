@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props extends SidebarItemT {
   tabIndex: number;
+  onSelect: () => void;
 }
 
-const SidebarItem = ({ title, icon, slug, tabIndex }: Props) => {
+const SidebarItem = ({ title, icon, slug, tabIndex, onSelect }: Props) => {
   const goTo = useNavigate();
   const faIcon = icon as IconName;
 
@@ -17,7 +18,10 @@ const SidebarItem = ({ title, icon, slug, tabIndex }: Props) => {
       role="menuitem"
       aria-label={title}
       tabIndex={tabIndex + 1}
-      onClick={() => goTo(`/${slug ?? ""}`)}
+      onClick={() => {
+        onSelect();
+        goTo(`/${slug}`);
+      }}
     >
       <div className="SidebarItem__icon-container">
         <FontAwesomeIcon icon={faIcon} />

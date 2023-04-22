@@ -4,34 +4,36 @@ import Sidebar from "~/components/shared/sidebar";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUser,
-  faGlobe,
+  faHome,
   faBars,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-library.add(faUser, faGlobe, faBars, faFilter);
+library.add(faUser, faHome, faBars, faFilter);
 
 interface Props {
   children: React.ReactElement;
 }
 
 const Layout = ({ children }: Props) => {
+  const [openMenu, setOpenMenu] = useState<boolean | undefined>(undefined);
+
   return (
     <div className="Layout">
       <Sidebar
+        isMenuOpen={openMenu}
         items={[
           {
-            icon: "user",
+            icon: "home",
             title: "Home",
-          },
-          {
-            icon: "globe",
-            title: "Planet",
+            slug: "",
           },
         ]}
+        onMenuClose={() => setOpenMenu(false)}
       />
       <div>
-        <Header onMenuClick={() => {}} />
+        <Header onMenuClick={() => setOpenMenu(true)} />
         {children}
         <Footer />
       </div>
