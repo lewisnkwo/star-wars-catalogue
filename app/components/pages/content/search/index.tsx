@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
 import CharacterCard from "~/components/shared/character-card";
+import { useParams } from "@remix-run/react";
 
 const Search = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -14,6 +15,9 @@ const Search = () => {
     Character | undefined
   >(undefined);
 
+  const params = useParams();
+  console.log(params);
+
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
@@ -22,7 +26,7 @@ const Search = () => {
     setError(false);
     setLoading(true);
 
-    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent("luke")}`)
+    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent("")}`)
       .then((response) => response.json())
       .then(({ results }) => {
         setCharacters(results);

@@ -2,14 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
 import CharacterCard from "../../../shared/character-card";
+import { useCharacters } from "~/swr";
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [characters, setCharacters] = useState<Character[] | undefined>(
-    undefined
-  );
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
   const [selectedCharacter, setSelectedCharacter] = useState<
     Character | undefined
   >(undefined);
@@ -20,18 +16,7 @@ const Home = () => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
-  useEffect(() => {
-    setError(false);
-    setLoading(true);
-
-    fetch("https://swapi.dev/api/people")
-      .then((response) => response.json())
-      .then(({ results }) => {
-        setCharacters(results);
-      })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
+  const { loading, error, characters } = useCharacters();
 
   useEffect(() => {
     if (sidebarCharacterRef?.current) {
