@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Props {
   onSidebarClick: () => void;
   onFilterBarClick: () => void;
+  showFilter: boolean;
 }
 
-const Header = ({ onSidebarClick, onFilterBarClick }: Props) => {
+const Header = ({ onSidebarClick, onFilterBarClick, showFilter }: Props) => {
   return (
     <header>
       <button id="menu-button" aria-label="Menu" onClick={onSidebarClick}>
@@ -21,9 +22,11 @@ const Header = ({ onSidebarClick, onFilterBarClick }: Props) => {
             aria-label="Search people"
           />
         </form>
-        <button aria-label="Filter" onClick={onFilterBarClick}>
-          <FontAwesomeIcon icon="filter" />
-        </button>
+        {showFilter && (
+          <button aria-label="Filter" onClick={onFilterBarClick}>
+            <FontAwesomeIcon icon="filter" />
+          </button>
+        )}
       </>
     </header>
   );

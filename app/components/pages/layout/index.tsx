@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import FilterBar from "~/components/shared/filter-bar";
+import { useLocation } from "@remix-run/react";
 
 library.add(faHome, faBars, faFilter, faArrowUpAZ, faArrowDownAZ);
 
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+  const location = useLocation();
   const [openSidebar, setOpenSidebar] = useState<boolean | undefined>(
     undefined
   );
@@ -47,6 +49,7 @@ const Layout = ({ children }: Props) => {
         <Header
           onSidebarClick={() => setOpenSidebar(true)}
           onFilterBarClick={() => setOpenFilterBar(true)}
+          showFilter={location.pathname === "/"}
         />
         {children}
         <Footer />
