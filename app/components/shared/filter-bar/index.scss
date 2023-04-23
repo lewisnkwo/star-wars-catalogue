@@ -1,0 +1,77 @@
+@use "../../../styles/variables" as *;
+
+.FilterBar,
+.FilterBar--open,
+.FilterBar--close {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100vh;
+  border-right: $border-container;
+  background: #ffffff;
+}
+
+.FilterBar__top {
+  @include flex(column);
+}
+
+.FilterBar__items {
+  margin-top: 40px;
+}
+
+.FilterBar__title {
+  @include text-content-title;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.FilterBar__description {
+  @include text-secondary-small;
+  margin-top: 4px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .FilterBar,
+  .FilterBar--open,
+  .FilterBar--close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .FilterBar__underlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #9f9f9f;
+    opacity: 0.3;
+  }
+
+  .FilterBar {
+    right: -280px;
+  }
+
+  .FilterBar--open {
+    right: 0px;
+  }
+
+  .FilterBar--close {
+    right: -280px;
+    animation: slide-right 0.2s ease-out forwards;
+  }
+
+  @keyframes slide-right {
+    0% {
+      right: 0px;
+    }
+    100% {
+      right: -280px;
+    }
+  }
+}

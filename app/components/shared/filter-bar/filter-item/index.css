@@ -1,0 +1,38 @@
+.FilterItem {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0px 12px 14.5px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.FilterItem:hover {
+  background-color: #f2f2f2;
+}
+.FilterItem:active {
+  background-color: #e5e5e5;
+}
+.FilterItem:last-child {
+  margin-bottom: 0px;
+}
+
+.FilterItem__icon {
+  width: 15px;
+  height: auto;
+}
+
+.FilterItem__icon-container {
+  width: 25px;
+  height: auto;
+}
+
+.FilterItem__title {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 18.5px;
+}
+
+/*# sourceMappingURL=index.css.map */

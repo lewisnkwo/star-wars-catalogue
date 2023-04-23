@@ -4,6 +4,11 @@ export interface SidebarItem {
   slug: string;
 }
 
+export interface FitlerItem {
+  icon: string;
+  title: string;
+}
+
 export interface InfoItem {
   label: string;
   value: string;
