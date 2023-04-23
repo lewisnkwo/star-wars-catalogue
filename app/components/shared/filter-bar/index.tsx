@@ -28,11 +28,11 @@ const FilterBar = ({ items, isMenuOpen, onMenuClose }: Props) => {
             Filter and sort the results
           </span>
         </div>
-        <nav className="FilterBar__items" aria-label="Filters">
+        <div className="FilterBar__items" aria-label="Filters">
           {items.map((item, i) => (
             <Item key={i} {...item} />
           ))}
-        </nav>
+        </div>
       </div>
       {isMenuOpen && (
         <div className="FilterBar__underlay" onClick={onMenuClose} />

@@ -17,7 +17,7 @@ library.add(faHome, faBars, faFilter, faArrowUpAZ, faArrowDownAZ);
 
 interface Props {
   children: React.ReactElement;
-  showFilterBar: () => void;
+  showFilterBar?: () => void;
 }
 
 const Layout = ({ children, showFilterBar }: Props) => {
@@ -42,7 +42,7 @@ const Layout = ({ children, showFilterBar }: Props) => {
       <div>
         <Header
           onSidebarClick={() => setOpenSidebar(true)}
-          onFilterBarClick={showFilterBar}
+          onFilterBarClick={() => showFilterBar && showFilterBar()}
           showFilter={location.pathname === "/"}
         />
         {children}
