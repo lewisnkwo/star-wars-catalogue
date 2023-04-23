@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "~/components/shared/header";
 import Footer from "~/components/shared/footer";
 import Sidebar from "~/components/shared/sidebar";
@@ -10,21 +11,18 @@ import {
   faArrowDownAZ,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import FilterBar from "~/components/shared/filter-bar";
 import { useLocation } from "@remix-run/react";
 
 library.add(faHome, faBars, faFilter, faArrowUpAZ, faArrowDownAZ);
 
 interface Props {
   children: React.ReactElement;
+  showFilterBar: () => void;
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, showFilterBar }: Props) => {
   const location = useLocation();
   const [openSidebar, setOpenSidebar] = useState<boolean | undefined>(
-    undefined
-  );
-  const [openFilterBar, setOpenFilterBar] = useState<boolean | undefined>(
     undefined
   );
 
@@ -41,14 +39,10 @@ const Layout = ({ children }: Props) => {
         ]}
         onMenuClose={() => setOpenSidebar(false)}
       />
-      <FilterBar
-        isMenuOpen={openFilterBar}
-        onMenuClose={() => setOpenFilterBar(false)}
-      />
       <div>
         <Header
           onSidebarClick={() => setOpenSidebar(true)}
-          onFilterBarClick={() => setOpenFilterBar(true)}
+          onFilterBarClick={showFilterBar}
           showFilter={location.pathname === "/"}
         />
         {children}

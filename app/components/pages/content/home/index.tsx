@@ -2,9 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
 import CharacterCard from "../../../shared/character-card";
-import { useCharacters } from "~/swr";
 
-const Home = () => {
+interface Props {
+  characters: Character[] | undefined;
+  loading: boolean;
+  error: boolean;
+}
+
+const Home = ({ characters, loading, error }: Props) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [selectedCharacter, setSelectedCharacter] = useState<
     Character | undefined
@@ -15,8 +20,6 @@ const Home = () => {
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
-
-  const { loading, error, characters } = useCharacters();
 
   useEffect(() => {
     if (sidebarCharacterRef?.current) {
