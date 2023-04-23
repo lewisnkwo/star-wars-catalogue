@@ -1,5 +1,77 @@
 import type { Character, CharacterListItem } from "./types";
-import { createInitials, toCharacterList } from "./utils";
+import {
+  createInitials,
+  sortAscending,
+  sortDescending,
+  toCharacterList,
+} from "./utils";
+
+const characters: Character[] = [
+  {
+    name: "Luke Skywalker",
+    height: "172",
+    mass: "77",
+    hair_color: "blond",
+    skin_color: "fair",
+    eye_color: "blue",
+    birth_year: "19BBY",
+    gender: "male",
+    homeworld: "Tatooine",
+    films: ["A New Hope", "The Empire Strikes Back", "Return of the Jedi"],
+    species: ["Human"],
+    vehicles: ["Snowspeeder", "Imperial Speeder Bike"],
+    starships: ["X-wing", "Imperial shuttle"],
+    created: "2014-12-09T13:50:51.644000Z",
+    edited: "2014-12-20T21:17:56.891000Z",
+    url: "https://swapi.dev/api/people/1/",
+  },
+  {
+    name: "Darth Vader",
+    height: "202",
+    mass: "136",
+    hair_color: "none",
+    skin_color: "white",
+    eye_color: "yellow",
+    birth_year: "41.9BBY",
+    gender: "male",
+    homeworld: "Tatooine",
+    films: [
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi",
+      "Revenge of the Sith",
+    ],
+    species: ["Human"],
+    vehicles: [],
+    starships: ["TIE Advanced x1"],
+    created: "2014-12-10T15:18:20.704000Z",
+    edited: "2014-12-20T21:17:50.313000Z",
+    url: "https://swapi.dev/api/people/4/",
+  },
+  {
+    name: "Leia Organa",
+    height: "150",
+    mass: "49",
+    hair_color: "brown",
+    skin_color: "light",
+    eye_color: "brown",
+    birth_year: "19BBY",
+    gender: "female",
+    homeworld: "Alderaan",
+    films: [
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi",
+      "The Force Awakens",
+    ],
+    species: ["Human"],
+    vehicles: ["Tantive IV"],
+    starships: [],
+    created: "2014-12-10T15:20:09.791000Z",
+    edited: "2014-12-20T21:17:50.315000Z",
+    url: "https://swapi.dev/api/people/5/",
+  },
+];
 
 describe("createInitials", () => {
   it("should return empty string for empty input", () => {
@@ -68,5 +140,19 @@ describe("toCharacterList", () => {
     const result = toCharacterList(characters);
 
     expect(result).toEqual(expected);
+  });
+});
+
+describe("sortAscending", () => {
+  it("should sort the characters in ascending order by name", () => {
+    const expected: Character[] = [characters[1], characters[2], characters[0]];
+    expect(sortAscending(characters)).toEqual(expected);
+  });
+});
+
+describe("sortDescending", () => {
+  it("should sort the characters in descending order by name", () => {
+    const expected: Character[] = [characters[0], characters[2], characters[1]];
+    expect(sortDescending(characters)).toEqual(expected);
   });
 });
