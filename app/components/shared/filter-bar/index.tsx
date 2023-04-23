@@ -1,12 +1,14 @@
+import type { FitlerItem } from "~/types";
 import Item from "./filter-item";
 import { useEffect } from "react";
 
 interface Props {
+  items: FitlerItem[];
   isMenuOpen: boolean | undefined;
   onMenuClose: () => void;
 }
 
-const FilterBar = ({ isMenuOpen, onMenuClose }: Props) => {
+const FilterBar = ({ items, isMenuOpen, onMenuClose }: Props) => {
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
   }, [isMenuOpen]);
@@ -27,18 +29,9 @@ const FilterBar = ({ isMenuOpen, onMenuClose }: Props) => {
           </span>
         </div>
         <nav className="FilterBar__items" aria-label="Filters">
-          <Item
-            icon="arrow-up-a-z"
-            title="Sort Ascending"
-            tabIndex={1}
-            onSelect={onMenuClose}
-          />
-          <Item
-            icon="arrow-down-a-z"
-            title="Sort Descending"
-            tabIndex={2}
-            onSelect={onMenuClose}
-          />
+          {items.map((item, i) => (
+            <Item key={i} {...item} />
+          ))}
         </nav>
       </div>
       {isMenuOpen && (

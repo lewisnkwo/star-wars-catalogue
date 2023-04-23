@@ -7,6 +7,8 @@ export interface SidebarItem {
 export interface FitlerItem {
   icon: string;
   title: string;
+  tabIndex: number;
+  onSelect: () => void;
 }
 
 export interface InfoItem {

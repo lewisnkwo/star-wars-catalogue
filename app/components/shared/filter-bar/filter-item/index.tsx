@@ -1,11 +1,8 @@
 import type { IconName } from "@fortawesome/fontawesome-common-types";
-import type { FitlerItem as FilterItemT } from "../../../../types";
+import type { FitlerItem } from "../../../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface Props extends FilterItemT {
-  tabIndex: number;
-  onSelect: () => void;
-}
+export type Props = FitlerItem;
 
 const FilterItem = ({ title, icon, tabIndex, onSelect }: Props) => {
   const faIcon = icon as IconName;
