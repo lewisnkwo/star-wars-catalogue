@@ -145,14 +145,22 @@ describe("toCharacterList", () => {
 
 describe("sortAscending", () => {
   it("should sort the characters in ascending order by name", () => {
-    const expected: Character[] = [characters[1], characters[2], characters[0]];
-    expect(sortAscending(characters)).toEqual(expected);
+    const expected: Character["name"][] = [
+      "Darth Vader",
+      "Leia Organa",
+      "Luke Skywalker",
+    ];
+    expect(sortAscending(characters).map((c) => c.name)).toEqual(expected);
   });
 });
 
 describe("sortDescending", () => {
   it("should sort the characters in descending order by name", () => {
-    const expected: Character[] = [characters[0], characters[2], characters[1]];
-    expect(sortDescending(characters)).toEqual(expected);
+    const expected: Character["name"][] = [
+      "Luke Skywalker",
+      "Leia Organa",
+      "Darth Vader",
+    ];
+    expect(sortDescending(characters).map((c) => c.name)).toEqual(expected);
   });
 });
