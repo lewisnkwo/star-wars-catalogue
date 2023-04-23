@@ -10,6 +10,28 @@
   height: 100vh;
   border-right: $border-container;
   background: #ffffff;
+  position: fixed;
+  top: 0;
+  right: -280px;
+  z-index: 2;
+}
+
+.FilterBar--open {
+  right: 0px;
+  animation: slide-right 0.2s ease-out backwards;
+}
+
+.FilterBar--close {
+  right: -280px;
+}
+
+@keyframes slide-right {
+  0% {
+    right: 0px;
+  }
+  100% {
+    right: -280px;
+  }
 }
 
 .FilterBar__top {
@@ -32,46 +54,13 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 768px) {
-  .FilterBar,
-  .FilterBar--open,
-  .FilterBar--close {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-  }
-
-  .FilterBar__underlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: #9f9f9f;
-    opacity: 0.3;
-  }
-
-  .FilterBar {
-    right: -280px;
-  }
-
-  .FilterBar--open {
-    right: 0px;
-  }
-
-  .FilterBar--close {
-    right: -280px;
-    animation: slide-right 0.2s ease-out forwards;
-  }
-
-  @keyframes slide-right {
-    0% {
-      right: 0px;
-    }
-    100% {
-      right: -280px;
-    }
-  }
+.FilterBar__underlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #9f9f9f;
+  opacity: 0.3;
 }

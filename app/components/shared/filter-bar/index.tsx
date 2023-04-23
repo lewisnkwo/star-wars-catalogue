@@ -16,32 +16,34 @@ const FilterBar = ({ isMenuOpen, onMenuClose }: Props) => {
       <div
         className={`${
           isMenuOpen !== undefined
-            ? `Filter${isMenuOpen ? "--open" : "--close"}`
-            : `Filter`
+            ? `FilterBar${isMenuOpen ? "--open" : "--close"}`
+            : `FilterBar`
         }`}
       >
-        <div className="Filter__top">
-          <span className="Filter__title">Filter Results</span>
-          <span className="Filter__description">
+        <div className="FilterBar__top">
+          <span className="FilterBar__title">Filter Results</span>
+          <span className="FilterBar__description">
             Filter and sort the results
           </span>
         </div>
-        <nav className="Filter__items" aria-label="Filters">
+        <nav className="FilterBar__items" aria-label="Filters">
           <Item
-            icon=""
+            icon="arrow-up-a-z"
             title="Sort Ascending"
             tabIndex={1}
-            onSelect={() => {}}
+            onSelect={onMenuClose}
           />
           <Item
-            icon=""
+            icon="arrow-down-a-z"
             title="Sort Descending"
             tabIndex={2}
-            onSelect={() => {}}
+            onSelect={onMenuClose}
           />
         </nav>
       </div>
-      {isMenuOpen && <div className="Filter__underlay" onClick={onMenuClose} />}
+      {isMenuOpen && (
+        <div className="FilterBar__underlay" onClick={onMenuClose} />
+      )}
     </>
   );
 };

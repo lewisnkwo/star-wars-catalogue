@@ -19,6 +19,8 @@ import footerStyles from "./components/shared/footer/index.css";
 import imageStyles from "./components/shared/image/index.css";
 import sidebarStyles from "./components/shared/sidebar/index.css";
 import sidebarItemStyles from "./components/shared/sidebar/sidebar-item/index.css";
+import filterStyles from "./components/shared/filter-bar/index.css";
+import filterItemStyles from "./components/shared/filter-bar/filter-item/index.css";
 import sidebarDetailStyles from "./components/shared/sidebar-detail/index.css";
 import infoItemStyles from "./components/shared/info-item/index.css";
 
@@ -36,6 +38,8 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: imageStyles },
     { rel: "stylesheet", href: sidebarStyles },
     { rel: "stylesheet", href: sidebarItemStyles },
+    { rel: "stylesheet", href: filterStyles },
+    { rel: "stylesheet", href: filterItemStyles },
     { rel: "stylesheet", href: sidebarDetailStyles },
     { rel: "stylesheet", href: infoItemStyles },
   ];
