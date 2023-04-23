@@ -44,3 +44,18 @@ export const sortDescending = (items: Character[]): Character[] =>
     }
     return 0;
   });
+
+export const filterByGender = (
+  items: Character[],
+  filterValue: string
+): Character[] =>
+  items.filter((c) => {
+    if (
+      filterValue === "all" ||
+      !["male", "female", "n/a"].includes(filterValue)
+    ) {
+      return c;
+    }
+
+    return filterValue === c.gender;
+  });

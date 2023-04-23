@@ -5,7 +5,7 @@ import { useCharacters } from "~/swr";
 import FilterBar from "~/components/shared/filter-bar";
 import { useState } from "react";
 import type { Character } from "~/types";
-import { sortAscending, sortDescending } from "~/utils";
+import { filterByGender, sortAscending, sortDescending } from "~/utils";
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: "Star Wars Catalogue" }];
@@ -16,15 +16,14 @@ export default function Index() {
   const [openFilterBar, setOpenFilterBar] = useState<boolean | undefined>(
     undefined
   );
-  const [sortedCharacters, setSortedCharacters] = useState<
-    Character[] | undefined
-  >(undefined);
+  const [sortedAndFilteredCharacters, setSortedAndFilteredCharacters] =
+    useState<Character[] | undefined>(undefined);
 
   return (
     <Layout showFilterBar={() => setOpenFilterBar(true)}>
       <>
         <Home
-          characters={sortedCharacters ?? characters}
+          characters={sortedAndFilteredCharacters ?? characters}
           loading={loading}
           error={error}
         />
@@ -35,7 +34,8 @@ export default function Index() {
               title: "Sort Ascending",
               tabIndex: 1,
               onSelect: () => {
-                characters && setSortedCharacters(sortAscending(characters));
+                characters &&
+                  setSortedAndFilteredCharacters(sortAscending(characters));
                 setOpenFilterBar(false);
               },
             },
@@ -44,12 +44,18 @@ export default function Index() {
               title: "Sort Descending",
               tabIndex: 2,
               onSelect: () => {
-                characters && setSortedCharacters(sortDescending(characters));
+                characters &&
+                  setSortedAndFilteredCharacters(sortDescending(characters));
                 setOpenFilterBar(false);
               },
             },
           ]}
           isMenuOpen={openFilterBar}
+          onFilterChange={(v) => {
+            characters &&
+              setSortedAndFilteredCharacters(filterByGender(characters, v));
+            setOpenFilterBar(false);
+          }}
           onMenuClose={() => setOpenFilterBar(false)}
         />
       </>

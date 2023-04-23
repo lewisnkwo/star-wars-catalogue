@@ -41,8 +41,8 @@ const Layout = ({ children, showFilterBar }: Props) => {
       />
       <div>
         <Header
-          onSidebarClick={() => setOpenSidebar(true)}
-          onFilterBarClick={() => showFilterBar && showFilterBar()}
+          onSidebarOpen={() => setOpenSidebar(true)}
+          onFilterBarOpen={() => showFilterBar && showFilterBar()}
           showFilter={location.pathname === "/"}
         />
         {children}

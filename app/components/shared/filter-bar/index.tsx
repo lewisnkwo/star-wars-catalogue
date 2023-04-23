@@ -5,10 +5,16 @@ import { useEffect } from "react";
 interface Props {
   items: FitlerItem[];
   isMenuOpen: boolean | undefined;
+  onFilterChange: (v: string) => void;
   onMenuClose: () => void;
 }
 
-const FilterBar = ({ items, isMenuOpen, onMenuClose }: Props) => {
+const FilterBar = ({
+  items,
+  isMenuOpen,
+  onFilterChange,
+  onMenuClose,
+}: Props) => {
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
   }, [isMenuOpen]);
@@ -39,13 +45,13 @@ const FilterBar = ({ items, isMenuOpen, onMenuClose }: Props) => {
               className="FilterBar__select"
               name="gender"
               defaultValue="all"
-              onChange={(e) => e.currentTarget.value}
+              onChange={(e) => onFilterChange(e.currentTarget.value)}
               aria-label="Filter by Gender"
             >
               <option value="all">All</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="na">N/A</option>
+              <option value="n/a">N/A</option>
             </select>
           </section>
         </div>

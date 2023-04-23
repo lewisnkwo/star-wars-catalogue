@@ -1,6 +1,7 @@
 import type { Character, CharacterListItem } from "./types";
 import {
   createInitials,
+  filterByGender,
   sortAscending,
   sortDescending,
   toCharacterList,
@@ -162,5 +163,80 @@ describe("sortDescending", () => {
       "Darth Vader",
     ];
     expect(sortDescending(characters).map((c) => c.name)).toEqual(expected);
+  });
+});
+
+describe("filterByGender", () => {
+  const filterCharacters: Character[] = [
+    ...characters,
+    {
+      name: "R2-D2",
+      height: "96",
+      mass: "32",
+      hair_color: "n/a",
+      skin_color: "white, blue",
+      eye_color: "red",
+      birth_year: "33BBY",
+      gender: "n/a",
+      homeworld: "https://swapi.dev/api/planets/8/",
+      films: [
+        "https://swapi.dev/api/films/1/",
+        "https://swapi.dev/api/films/2/",
+        "https://swapi.dev/api/films/3/",
+        "https://swapi.dev/api/films/4/",
+        "https://swapi.dev/api/films/5/",
+        "https://swapi.dev/api/films/6/",
+      ],
+      species: ["https://swapi.dev/api/species/2/"],
+      vehicles: [],
+      starships: [],
+      created: "2014-12-10T15:11:50.376000Z",
+      edited: "2014-12-20T21:17:50.311000Z",
+      url: "https://swapi.dev/api/people/3/",
+    },
+  ];
+
+  it('should return all items when the filter value is "all"', () => {
+    const expected: Character["name"][] = [
+      "Luke Skywalker",
+      "Darth Vader",
+      "Leia Organa",
+      "R2-D2",
+    ];
+
+    expect(filterByGender(filterCharacters, "all").map((c) => c.name)).toEqual(
+      expected
+    );
+  });
+
+  it('should return only male characters when the filter value is "male"', () => {
+    const expected: Character["name"][] = ["Luke Skywalker", "Darth Vader"];
+    expect(filterByGender(filterCharacters, "male").map((c) => c.name)).toEqual(
+      expected
+    );
+  });
+
+  it('should return only female characters when filter value is "female"', () => {
+    const expected: Character["name"][] = ["Leia Organa"];
+    expect(
+      filterByGender(filterCharacters, "female").map((c) => c.name)
+    ).toEqual(expected);
+  });
+
+  it('should return only characters with gender "n/a" when the filter value is "n/a"', () => {
+    const expected: Character["name"][] = ["R2-D2"];
+    expect(filterByGender(filterCharacters, "n/a").map((c) => c.name)).toEqual(
+      expected
+    );
+  });
+
+  it("should return all characters when there is an unspecified gender", () => {
+    expect(filterByGender(filterCharacters, "unspecified")).toEqual(
+      filterCharacters
+    );
+  });
+
+  it("should return no characters when the characters array is empty", () => {
+    expect(filterByGender([], "male")).toEqual([]);
   });
 });

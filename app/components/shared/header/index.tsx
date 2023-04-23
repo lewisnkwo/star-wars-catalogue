@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
-  onSidebarClick: () => void;
-  onFilterBarClick: () => void;
+  onSidebarOpen: () => void;
+  onFilterBarOpen: () => void | undefined;
   showFilter: boolean;
 }
 
-const Header = ({ onSidebarClick, onFilterBarClick, showFilter }: Props) => {
+const Header = ({ onSidebarOpen, onFilterBarOpen, showFilter }: Props) => {
   return (
     <header>
-      <button id="menu-button" aria-label="Menu" onClick={onSidebarClick}>
+      <button id="menu-button" aria-label="Menu" onClick={onSidebarOpen}>
         <FontAwesomeIcon icon="bars" />
       </button>
       <>
@@ -23,7 +23,11 @@ const Header = ({ onSidebarClick, onFilterBarClick, showFilter }: Props) => {
           />
         </form>
         {showFilter && (
-          <button aria-label="Filter" onClick={onFilterBarClick}>
+          <button
+            className="Header__filter-button"
+            aria-label="Filter"
+            onClick={onFilterBarOpen}
+          >
             <FontAwesomeIcon icon="filter" />
           </button>
         )}
