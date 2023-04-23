@@ -2,12 +2,18 @@
 
 To start the catalogue in your browser, you can run:
 
-#### `npm install`
+```sh
+npm install
+```
 
-then run:
+Afterwards, you can start the development server with:
 
-#### `npm start`
+```sh
+npm run dev
+```
 
 To run the tests:
 
-#### `npm test`
+```sh
+npm test
+```
