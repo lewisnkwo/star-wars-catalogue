@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import SidebarDetail from "../../../shared/sidebar-detail";
 import type { Character } from "~/types";
 import CharacterCard from "~/components/shared/character-card";
-import { useParams } from "@remix-run/react";
+import { useSearchParams } from "@remix-run/react";
 
 const Search = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -15,8 +15,8 @@ const Search = () => {
     Character | undefined
   >(undefined);
 
-  const params = useParams();
-  console.log(params);
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("term");
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -26,14 +26,18 @@ const Search = () => {
     setError(false);
     setLoading(true);
 
-    fetch(`https://swapi.dev/api/people/?search=${encodeURIComponent("")}`)
+    fetch(
+      `https://swapi.dev/api/people/?search=${encodeURIComponent(
+        searchTerm ?? ""
+      )}`
+    )
       .then((response) => response.json())
       .then(({ results }) => {
         setCharacters(results);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, []);
+  }, [searchTerm]);
 
   const sidebarCharacterRef = useRef<HTMLDivElement | null>(null);
 
